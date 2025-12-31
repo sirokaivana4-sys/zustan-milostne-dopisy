@@ -49,11 +49,13 @@ main {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
-  background: rgba(255, 255, 255, 0.85);
+  background: #fff8e7;
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  overflow-wrap: break-word; /* text se zalomí na malých obrazovkách */
+  border: 2px solid #d9b382;
+  font-style: italic;
+  overflow-wrap: break-word;
 }
 
 .letter.loaded {
@@ -63,7 +65,7 @@ main {
 
 .letter h2 {
   margin-bottom: 1rem;
-  color: #d14a7f;
+  color: #b35c7a;
   font-size: 1.5rem;
   text-align: center;
   text-shadow: 1px 1px 2px #fff;
@@ -72,30 +74,27 @@ main {
 .letter p {
   font-size: 1.1rem;
   line-height: 1.6;
-  white-space: pre-wrap; /* zachová nové řádky */
+  white-space: pre-wrap;
 }
 
-/* Responsivní úpravy pro mobil */
 @media (max-width: 600px) {
-  body {
-    font-size: 16px;
-  }
-  header {
-    font-size: 1.2rem;
-    padding: 3rem 1rem;
-  }
-  .letter {
-    padding: 1rem;
-  }
-  .letter h2 {
-    font-size: 1.3rem;
-  }
-  .letter p {
-    font-size: 1rem;
-  }
+  body { font-size: 16px; }
+  header { font-size: 1.2rem; padding: 3rem 1rem; }
+  .letter { padding: 1rem; }
+  .letter h2 { font-size: 1.3rem; }
+  .letter p { font-size: 1rem; }
 }
 
-footer {
-  text-align: center;
+#download-section {
+  max-width: 600px;
+  margin: 3rem auto;
   padding: 2rem;
+  text-align: center;
+  background: #fff0f5;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+#download-section ul { list-style: none; padding: 0; }
+#download-section li { margin: 0.5rem 0; }
+#download-section a { text-decoration: none; color: #d14a7f; font-weight: bold; }
+#download-section a:hover { text-decoration: underline; }
