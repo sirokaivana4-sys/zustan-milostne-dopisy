@@ -53,6 +53,7 @@ main {
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow-wrap: break-word; /* text se zalomí na malých obrazovkách */
 }
 
 .letter.loaded {
@@ -70,7 +71,28 @@ main {
 
 .letter p {
   font-size: 1.1rem;
+  line-height: 1.6;
   white-space: pre-wrap; /* zachová nové řádky */
+}
+
+/* Responsivní úpravy pro mobil */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+  header {
+    font-size: 1.2rem;
+    padding: 3rem 1rem;
+  }
+  .letter {
+    padding: 1rem;
+  }
+  .letter h2 {
+    font-size: 1.3rem;
+  }
+  .letter p {
+    font-size: 1rem;
+  }
 }
 
 footer {
