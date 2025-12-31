@@ -38,6 +38,7 @@ function loadLetters(lang) {
   });
 }
 
+// výchozí načtení v češtině
 loadLetters('cz');
 
 document.getElementById('cz-btn').addEventListener('click', () => {
