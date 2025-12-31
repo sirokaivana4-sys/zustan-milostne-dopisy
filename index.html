@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantické dopisy</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="language-switch">
+    <button id="cz-btn">CZ</button>
+    <button id="en-btn">EN</button>
+  </div>
+
+  <header>
+    <h1 id="intro-cz">
+      Některé lásky nestihnou konec.<br>
+      Ne proto, že by skončily, ale proto, že jim ho někdo vzal.
+    </h1>
+    <h1 id="intro-en" style="display:none;">
+      Some loves never reach their ending.<br>
+      Not because they fade, but because someone stole the moment.
+    </h1>
+  </header>
+
+  <main id="letters"></main>
+
+  <footer>
+    <audio id="background-music" controls autoplay loop>
+      <source src="audio/hudba.mp3" type="audio/mpeg">
+      Váš prohlížeč nepodporuje přehrávání hudby.
+    </audio>
+    <a href="audio/hudba.mp3" download>Stáhnout hudbu</a>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
