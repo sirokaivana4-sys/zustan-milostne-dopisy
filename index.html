@@ -2,51 +2,150 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
+  <title>Zůstaň – milostné dopisy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Romantické dopisy</title>
+
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+      background: #fdecef;
+      font-family: Georgia, serif;
+      margin: 0;
+      padding: 0;
+      color: #5a2a3a;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    nav button, nav a {
+      background: #f5b7c7;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      color: #5a2a3a;
+    }
+
+    .card {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .pergamen {
+      max-height: 70vh;
+      overflow-y: auto;
+      padding: 3rem;
+      background: #fff3d6;
+      background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+      border: 3px solid #d2b48c;
+      border-radius: 18px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="language-switch">
-    <button id="cz-btn">CZ</button>
-    <button id="en-btn">EN</button>
-  </div>
 
-  <header>
-    <h1 id="intro-cz">
-      Některé lásky nestihnou konec.<br>
-      Ne proto, že by skončily, ale proto, že jim ho někdo vzal.
-    </h1>
-    <h1 id="intro-en" style="display:none;">
-      Some loves never reach their ending.<br>
-      Not because they fade, but because someone stole the moment.
-    </h1>
-  </header>
+<nav>
+  <button onclick="setLang('cz')">CZ</button>
+  <button onclick="setLang('en')">EN</button>
+  <a href="download.html" target="_blank">Stáhnout dopisy (PDF)</a>
+</nav>
 
-  <main id="letters"></main>
+<section class="card">
+  <h1 id="title">Zůstaň</h1>
+  <p id="intro" style="text-align:center">
+    Některé lásky se nevejdou do slov. Tyhle dopisy se o to přesto pokusily.
+  </p>
+</section>
 
-  <section id="download-section">
-    <h2>Stáhnout dopisy (PDF)</h2>
-    <ul>
-      <li><a href="pdf/dopis1.pdf" download>Dopis 1</a></li>
-      <li><a href="pdf/dopis2.pdf" download>Dopis 2</a></li>
-      <li><a href="pdf/dopis3.pdf" download>Dopis 3</a></li>
-      <li><a href="pdf/dopis4.pdf" download>Dopis 4</a></li>
-      <li><a href="pdf/dopis5.pdf" download>Dopis 5</a></li>
-      <li><a href="pdf/dopis6.pdf" download>Dopis 6</a></li>
-      <li><a href="pdf/nedokoncen.pdf" download>Nedokončený dopis</a></li>
-      <li><a href="pdf/odpoved.pdf" download>Odpověď</a></li>
-    </ul>
-  </section>
+<section class="card">
+  <h2 id="lettersTitle">Dopisy</h2>
+  <div id="letters" class="pergamen"></div>
+</section>
 
-  <footer>
-    <audio id="background-music" controls autoplay loop>
-      <source src="audio/hudba.mp3" type="audio/mpeg">
-      Váš prohlížeč nepodporuje přehrávání hudby.
-    </audio>
+<section class="card">
+  <h2 id="musicTitle">Hudba</h2>
+  <audio controls autoplay loop>
+    <source src="audio/hudba.mp3" type="audio/mpeg">
+  </audio>
+  <p style="text-align:center">
     <a href="audio/hudba.mp3" download>Stáhnout hudbu</a>
-  </footer>
+  </p>
+</section>
 
-  <script src="js/script.js"></script>
+<script>
+const lettersCZ = [
+  {
+    title: "Odpověď Larysy",
+    text: `Laryso,
+je noc. Svět ztichl jako někdo, kdo tuší, že se má stát něco důležitého...`
+  }
+];
+
+const lettersEN = [
+  {
+    title: "Larysa’s Answer",
+    text: `Larysa,
+it is night. The world has fallen silent, as if it knows something important is about to happen...`
+  }
+];
+
+const texts = {
+  cz: {
+    title: "Zůstaň",
+    intro: "Některé lásky se nevejdou do slov. Tyhle dopisy se o to přesto pokusily.",
+    lettersTitle: "Dopisy",
+    musicTitle: "Hudba"
+  },
+  en: {
+    title: "Stay",
+    intro: "Some loves do not fit into words. These letters tried anyway.",
+    lettersTitle: "Letters",
+    musicTitle: "Music"
+  }
+};
+
+function setLang(lang) {
+  document.getElementById("title").innerText = texts[lang].title;
+  document.getElementById("intro").innerText = texts[lang].intro;
+  document.getElementById("lettersTitle").innerText = texts[lang].lettersTitle;
+  document.getElementById("musicTitle").innerText = texts[lang].musicTitle;
+
+  const container = document.getElementById("letters");
+  container.innerHTML = "";
+
+  const data = lang === "cz" ? lettersCZ : lettersEN;
+  data.forEach(l => {
+    container.innerHTML += `<h2>${l.title}</h2><p>${l.text}</p>`;
+  });
+}
+
+setLang("cz");
+</script>
+
 </body>
 </html>
